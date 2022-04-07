@@ -11,21 +11,32 @@
 # P(4,2) = 12
 # P(4,3) = 24
 # P(4,4) = 1
+ol = []
 
 def perm(wl, x, y):
+    cnt = 0
+
     if (x==y):
-        print (wl)
+        #print (wl, cnt)
+        ol.append(wl)
+        cnt += 1
+
     else:
         for i in range(x, y+1):
             wl[x], wl[i] = wl[i], wl[x]
             perm(wl, x+1, y)
             wl[x], wl[i] = wl[i], wl[x]
 
+    return ol
+
 def main():
     wl = ["CAST", "CARS", "PART", "TRIP"]
     x = 0
     y = len(wl)- 1
-    perm(wl, x , y)
+    ol = perm(wl, x , y)
+
+    for i in range(len(ol)):
+        print (i, ol[i])
 
 if __name__ == "__main__":
     main()
