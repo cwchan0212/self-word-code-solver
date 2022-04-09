@@ -15,17 +15,19 @@ def solution(beginWord, endWord, wordList):
             cnt = charCmp(oldWord, newWord)
             if (cnt == 1):
                 tmpWord = newWord
+                print (oldWord, "->", newWord)
                 wordPath.append(tmpWord)
                 tranCnt += 1
             else:
                 tmpWord = newWord
-                ss.append(tmpWord)
+                wordPath.append(tmpWord)
         else:
             oldWord = tmpWord
             newWord = wordList[i]
             cnt = charCmp(oldWord, newWord)
             if (cnt == 1):
                 tmpWord = newWord
+                print (oldWord, "->", newWord)
                 wordPath.append(tmpWord)
                 tranCnt += 1
     print("Word Path:" , wordPath)
