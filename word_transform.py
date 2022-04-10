@@ -30,6 +30,10 @@ def solution(beginWord, endWord, wordList):
                 print (oldWord, "->", newWord)
                 wordPath.append(tmpWord)
                 tranCnt += 1
+
+        if (tmpWord == endWord):
+            break
+
     print("Word Path:" , wordPath)
     return tranCnt
 
