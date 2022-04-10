@@ -7,22 +7,25 @@
 # Comination calculators: nCr = C(n,r) = n! / ( r! (n - r)! )
 #https://www.calculatorsoup.com/calculators/discretemathematics/combinations.php
 
+from itertools import permutations
+from itertools import combinations
+
 combi = []
 permut = []
 
 def perm(wl, x, y):
 
     if (x==y):
-        #print (wl)
-        permut.append(wl)
-        #permut.append(wl)
+        wTmp = list2Str(wl).strip()
+        if len(wTmp) > 0:
+            permut.append(wTmp.split("@"))
+        else:
+            permut.append([''])
     else:
         for i in range(x, y+1):
             wl[x], wl[i] = wl[i], wl[x]
             perm(wl, x+1, y)
             wl[x], wl[i] = wl[i], wl[x]
-    #return permut
-    #print (permut)
 
 def comp(wl, n, r):
     sl = []
@@ -33,12 +36,9 @@ def comp(wl, n, r):
 def combine(wl, sl, start, end, index, r):
 
     tmp = ""
-    #print(start, end, index, r)
     if (index == r):
         for j in range(r):
             tmp = tmp + sl[j] + "@"
-            #print(sl[j])
-        #print()
         tmp = tmp[0: len(tmp)-1]
         combi.append(tmp.split("@"))
         return
@@ -48,6 +48,22 @@ def combine(wl, sl, start, end, index, r):
         sl[index] = wl[i];
         combine(wl, sl, i+1, end, index+1, r)
         i += 1
+
+def list2Str(wl):
+
+    wStr = ""
+    for i in range(len(wl)):
+        wStr +=  str(wl[i]) + "@"
+    wStr = wStr[0:len(wStr)-1]
+    try:
+        if (wStr.index("@") >0 ):
+            pass
+        else:
+            wStr = ""
+    except ValueError:
+        wStr = ""
+
+    return wStr
 
 
 def main():
@@ -67,46 +83,32 @@ def main():
     # C(4,4) = 1
 
     wl = ["a", "b", "c", "d"]
-    r = 2 # no of balls drawn
+    r = 3 # no of balls drawn
     n = len(wl)
-    s = []
+    cl = []
 
-    comp(wl, n, r)
-    #print (combi)
+    if (n==r):
+        cl = wl.copy()
+        perm(cl, 0, len(cl)-1)
+        # for i in range(len(permut)):
+        #     print (i, permut[i])
+    else:
+        if (r > 0):
+            comp(wl, n, r)
+            for i in range(len(combi)):
+                #print("c", i, combi[i])
+                perm(combi[i], 0, len(combi[i])-1)
+        else:
+            comp(wl, n, r)
+            perm(combi, 0, len(combi)-1)
 
     for i in range(len(combi)):
-        print (combi[i])
-        print()
+        print (i, combi[i])
 
-        perm(combi[i], 0, len(combi[i])-1)
+    print()
 
-    print(permut)
-
-#     #print (r, n)
-#     if (r==n):
-#         x = 0
-#         y = n - 1
-#         perm(wl, 0, y)
-#         #perm(wl, x, y)
-#     else:
-#         comp(wl, n, r)
-#         for i in range(len(combi)):
-#             x = 0
-#             y = len(combi[i])-1
-#             #print(combi[i])
-#             perm(combi[i], x, y)
-#
-#             #print (combi[i])
-#
-# #    print(permut)
-#
-#     for i in range(len(permut)):
-#         print (i, permut[i])
-
-
-    #perm(wl, x , y)permu
-
-
+    for i in range(len(permut)):
+        print (i, permut[i])
 
 if __name__ == "__main__":
     main()
