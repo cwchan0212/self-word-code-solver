@@ -7,8 +7,8 @@
 # Comination calculators: nCr = C(n,r) = n! / ( r! (n - r)! )
 #https://www.calculatorsoup.com/calculators/discretemathematics/combinations.php
 
-from itertools import permutations
-from itertools import combinations
+#from itertools import permutations
+#from itertools import combinations
 
 combi = []
 permut = []
@@ -26,6 +26,8 @@ def perm(wl, x, y):
             wl[x], wl[i] = wl[i], wl[x]
             perm(wl, x+1, y)
             wl[x], wl[i] = wl[i], wl[x]
+
+    return permut
 
 def comp(wl, n, r):
     sl = []
@@ -48,6 +50,8 @@ def combine(wl, sl, start, end, index, r):
         sl[index] = wl[i];
         combine(wl, sl, i+1, end, index+1, r)
         i += 1
+
+    return combi
 
 def list2Str(wl):
 
