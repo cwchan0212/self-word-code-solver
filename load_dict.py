@@ -1,6 +1,18 @@
 dict = open("dict.txt", "r")
 
-ln = 0
+ln = ""
+pos = -1
 
 for x in dict:
-    print(x.strip())
+    ln = x.strip()
+    #print(ln)
+    try:
+        pos = ln.index("W=")
+        if (pos > -1):
+            print (ln)
+    except ValueError:
+        pos = -1
+
+
+    #if (ln.index("W=")> 0) :
+    #    print (ln)
