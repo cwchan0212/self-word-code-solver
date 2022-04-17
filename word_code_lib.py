@@ -9,6 +9,7 @@ class WordBank():
     def solveCode(self, wl, nl):
         print(wl)
         print(nl)
+        wnList = []
 
         nlStr = "".join(str(x) for x in nl)
         wStrList = []
@@ -17,43 +18,43 @@ class WordBank():
             #lnStr = ''.join(str(e) for e in p[i])
             lnStr = "".join(i)
             wStrList.append(lnStr)
-        compare(wStrList, nlStr)
+        wnList = compare(wStrList, nlStr)
+        joinList2Dict(wnList)
+
+def joinList2Dict(wnList):
+    n = w = []
+    dit = {}
+    if wnList != []:
+        w = list(wnList[0])
+        n = [int(x) for x in list(wnList[1])]
+        for i in range(len(w)):
+            dit[w[i]] = n[i]
+        dit = sorted(dit.items(), key = lambda kv:(kv[0], kv[1]))
+        return dit
 
 def compare(wStrList, nlStr):
-    dict ={}
-    sl = []
+    wnList = []
     temp = ""
-    cnt = 0
-    nl = [int(i) for i in list(nlStr)]
-    print (nlStr)
-    xx = ""
+    nl = [int(i) for i in list(nlStr)]#
     for i in range(len(wStrList)):
-        xx = wStrList[i]
-        #print (xx)
+        temp = wStrList[i]
         for j in range(len(nl)):
-            wStrList[i] = wStrList[i].replace(wStrList[i][j:j+1], str(nl[j]))
-        #print(xx)
-
-        if (wStrList[i] == nlStr):
-            print(wStrList[i], nlStr)
-        #sl = list(wStrList[i])
-        #print (wStrList[i])
-        # for j in range(len(wStrList[i])):
-        #     temp = wStrList[i].replace(wStrList[i][i:i+1],str(nl[j]))
-        # print (temp)
-
+            temp = temp.replace(temp[j:j+1], str(nl[j]))
+        if (temp == nlStr):
+#            print(wStrList[i], nlStr)
+            wnList = [wStrList[i], nlStr]
+            break
+    return wnList
 
 
 def str2List(wStr):
     wl = wStr.split(" ")
     return wl
 
+
 wStr = "TALE STAB BELT TILL"
 nStr = "4625 5322 7514"
-
 wl = wStr.split(" ")
 nl = [int(i) for i in nStr.split(" ")]
-# print(wl)
-# print(nl)
 w = WordBank()
 w.solveCode(wl, nl)
