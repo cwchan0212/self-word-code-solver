@@ -10,7 +10,6 @@ class WordBank():
         print(wl)
         print(nl)
         wnList = []
-
         nlStr = "".join(str(x) for x in nl)
         wStrList = []
         p = permutations(wl, 3)
@@ -19,7 +18,9 @@ class WordBank():
             lnStr = "".join(i)
             wStrList.append(lnStr)
         wnList = compare(wStrList, nlStr)
-        joinList2Dict(wnList)
+        dit = joinList2Dict(wnList)
+        #print("d", dit)
+        return dit
 
 def joinList2Dict(wnList):
     n = w = []
@@ -30,7 +31,9 @@ def joinList2Dict(wnList):
         for i in range(len(w)):
             dit[w[i]] = n[i]
         dit = sorted(dit.items(), key = lambda kv:(kv[0], kv[1]))
-        return dit
+        #print(dit)
+
+    return dit
 
 def compare(wStrList, nlStr):
     wnList = []
@@ -57,4 +60,5 @@ nStr = "4625 5322 7514"
 wl = wStr.split(" ")
 nl = [int(i) for i in nStr.split(" ")]
 w = WordBank()
-w.solveCode(wl, nl)
+dit = w.solveCode(wl, nl)
+print (dit)
