@@ -4,7 +4,7 @@ from itertools import permutations
 
 class WordBank():
     def __init__(self):
-        self.key = None
+        pass
 
     def solveCode(self, wl, nl):
         print(wl)
@@ -21,6 +21,12 @@ class WordBank():
         dit = joinList2Dict(wnList)
         #print("d", dit)
         return dit
+
+    def puzzle(self, dit, query):
+        if (query.isnumeric()):
+            dit = dict((v,k) for k,v in dit.items())
+            nl = [int(x) for i in list(query)]
+            print ("it is number!")
 
 def joinList2Dict(wnList):
     n = w = []
@@ -62,3 +68,4 @@ nl = [int(i) for i in nStr.split(" ")]
 w = WordBank()
 dit = w.solveCode(wl, nl)
 print (dit)
+w.puzzle(dit, "7354")
