@@ -25,12 +25,9 @@ class WordBank():
 
     def puzzle(self, dit, query):
         ans = ""
-
-        print(type(query))
-
-
-        if (isinstance(query, int)):
-            print ("it is number!", query, dit)
+        query = str(query)
+        if query.isdigit():
+            query = int(query)
             nl = [int(i) for i in list(str(query))]
             dit = dict((v,k) for k,v in dit.items())
             for k in dit:
@@ -38,7 +35,6 @@ class WordBank():
                     if (i == k):
                         ans += dit[k]
         else:
-            print ("it is NOT number!", query, dit)
             nl = list(query)
             for k in dit:
                 for i in nl:
@@ -89,5 +85,5 @@ nl = [int(i) for i in nStr.split(" ")]
 w = WordBank()
 dit = w.solveCode(wl, nl)
 #print ("out", dit)
-s = w.puzzle(dit, "TESLA")
+s = w.puzzle(dit, 1234)
 print(s)
