@@ -78,12 +78,12 @@ def str2List(wStr):
     return wl
 
 
-wStr = "TALE STAB BELT TILL"
-nStr = "4625 5322 7514"
-wl = wStr.split(" ")
-nl = [int(i) for i in nStr.split(" ")]
-w = WordBank()
-dit = w.solveCode(wl, nl)
-#print ("out", dit)
-s = w.puzzle(dit, 1234)
-print(s)
+# wStr = "TALE STAB BELT TILL"
+# nStr = "4625 5322 7514"
+# wl = wStr.split(" ")
+# nl = [int(i) for i in nStr.split(" ")]
+# w = WordBank()
+# dit = w.solveCode(wl, nl)
+# #print ("out", dit)
+# s = w.puzzle(dit, 1234)
+# print(s)
