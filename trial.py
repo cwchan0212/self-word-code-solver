@@ -1,0 +1,3 @@
+import wordcode
+
+so = WordBank()
