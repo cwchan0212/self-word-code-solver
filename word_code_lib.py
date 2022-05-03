@@ -1,11 +1,14 @@
 # word_code library
+# Libraries used to solve Word Code
 
 from itertools import permutations
 
+# Word Bank Class
 class WordBank():
     def __init__(self):
         pass
 
+    # Method to solve word code by inputting word list and number list
     def solveCode(self, wl, nl):
         print(wl)
         print(nl)
@@ -23,6 +26,7 @@ class WordBank():
         #print("d", dit)
         return dit
 
+    # Use word-number solution to decode the code
     def puzzle(self, dit, query):
         ans = ""
         query = str(query)
@@ -41,7 +45,8 @@ class WordBank():
                     if (i == k):
                         ans += str(dit[k])
         return ans
-
+ 
+#  Use the word list and nuumber list to form code dictionary 
 def joinList2Dict(wnList):
     n = w = []
     dit = {}
@@ -59,6 +64,7 @@ def joinList2Dict(wnList):
         #print("dit", dit)
     return dit
 
+# Compare the word number and number list
 def compare(wStrList, nlStr):
     wnList = []
     temp = ""
